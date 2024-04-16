@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Drop Down Sidebar Menu | CodingLab </title>
+    <link rel="stylesheet" href="/registrar/main.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="sidebar close">
+        <div class="logo-details">
+            <i class='bx bx-menu'></i>
+            <span class="logo_name">JISS</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="/registrar">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+            <li>
+                <a href="/add_case">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="link_name">Add Cases</span>
+                </a>
+            </li>
+            <!-- <li>
+                <a href="/add_login">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="link_name">Add Judge</span>
+                </a>
+            </li> -->
+            <li>
+                <a href="/add_login">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="link_name">User Registration Id</span>
+                </a>
+            </li>
+            <li>
+                <a href="/records">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="link_name">Records</span>
+                </a>
+            </li>
+                <li>
+                    <a href="/">
+                        <i class='bx bx-log-out'></i>
+                        <span class="link_name" >Logout</span>
+                    </a>
+                </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <div class="home-content">
+            <p class="text">Judiciary Information System</p>
+        </div>
+        <div class="container">
+            <div class="case-box" id="totalCases" onclick="location.href='/registrar/all.html'">
+                <h2>Registered Cases</h2>
+                <p>Loading..</p>
+            </div>
+            <div class="case-box" id="pendingCases" onclick="location.href='/registrar/pending.html'">
+                <h2>Pending Cases</h2>
+                <p>Loading..</p>
+            </div>
+            <div class="case-box" id="solvedCases" onclick="location.href='/registrar/solved.html'">
+                <h2>Solved Cases</h2>
+                <p>Loading..</p>
+            </div>
+            <div class="case-box" id="runningCases" onclick="location.href='/registrar/run.html'">
+                <h2>Running Cases</h2>
+                <p>Loading..</p>
+            </div>
+        </div>
+        <div class="hearing" id="hearing" onclick="location.href='/registrar/schedule.html'">
+            <h2>Schedule Hearing</h2>
+        </div>
+        <div>
+            <input type="text" id="searchInput" placeholder="Search...">
+            <select id="searchBy" onchange="updateSearchFunction()">
+                <option value="cin">Search by CIN</option>
+                <!-- <option value="crimeType">Search by Crime Type</option> -->
+                <option value="judgeAssigned">Search by Judge</option>
+                <option value="lawyer">Search by Lawyer</option>
+            </select>
+            <button onclick="performSearch()" class="search">Search</button>
+        </div>
+        <div class="ww">
+            <h2>Case List</h2>
+            <div class="container1" id="caseList">
+                <!-- Cases will be displayed here -->
+            </div>
+            <div id="caseDetails" class="case-details-popup" style="display: none;">
+                <span id="closeDetails">&times;</span> 
+                <div id="detailsContent"></div>
+                <button id="downloadPdf">Download PDF</button>
+            </div>
+        </div>
+        
+    </section>
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Hearing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Schedule Hearing</h1>
+        <form id="scheduleForm">
+            <div class="form-group">
+                <label for="caseId">Case ID:</label>
+                <select id="caseId" name="caseId">
+                </select>
+            </div>
+
+            <div class="form-group" class="tt">
+                <label for="hearingDate">Hearing Date:</label>
+                <input type="date" id="hearingDate" name="hearingDate" onchange="updateSlots()">
+            </div>
+
+            <div class="form-group">
+                <label for="hearingSlot">Hearing Slot:</label>
+                <select id="hearingSlot" name="hearingSlot">
+                    <!-- Options will be populated dynamically -->
+                </select>
+            </div>
+
+            <div class="form-group" class="tt">
+                <label for="adjornedReason">Adjourned Reason:</label>
+                <input type="text" id="adjornedReason" name="adjornedReason">
+            </div>
+
+            <div class="form-group" class="tt">
+                <label for="summary">Summary:</label>
+                <textarea id="summary" name="summary" rows="4"></textarea>
+            </div>
+
+            <button type="button" onclick="scheduleHearing()">Schedule Hearing</button>
+            <button id="upcoming">Upcoming scheduled Hearings</button>
+            <div id="upcomingHearings">
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

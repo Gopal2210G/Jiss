@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Cases</title>
+</head>
+<style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #E4E9F7;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    top: 30px;
+    width: 60%;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    left: 180px;
+    position: absolute;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+
+.case-block {
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.case-block:hover {
+    background-color: #f5f5f5;
+}
+
+.case-block h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.case-block p {
+    margin: 10px 0;
+}
+
+.case-block .cin {
+    font-weight: bold;
+}
+
+input[type="text"] {
+    text-align: left;
+}
+
+#caseDetails {
+    border: 1px solid #ccc;
+    padding: 20px;
+    position: fixed;
+    top: 30px; 
+    right: 20px; 
+    width: 20%; 
+    background-color: #f9f9f9;
+    z-index: 1000;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#caseDetails label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#caseDetails button {
+    padding: 10px 20px;
+    background-color:  #162938;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#caseDetails button:hover {
+    background-color: rgb(45, 63, 82)8;
+}
+
+#closeDetails {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #aaa;
+}
+
+#closeDetails:hover {
+    color: #333;
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1>Registered Cases</h1>
+
+        <h2>Registered Cases</h2>
+        <input type="text" id="searchInput" placeholder="Search by CIN...">
+        <div id="caseList"></div>
+        <div id="caseDetails" draggable="true">
+            <span id="closeDetails">&times;</span>
+        </div>
+    </div>
+
+    <script src="all.js"></script>
+</body>
+
+</html>

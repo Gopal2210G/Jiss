@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="/login/login.css">
+
+    <script src="https://kit.fontawesome.com/0369456ea7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <h3 class="logo">JIS Software</h3>
+        <nav class="nav">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <button class="btn-pop">Login</button>
+        </nav>
+    </header>
+
+    <div class="wrap">
+        <span class="close"><ion-icon name="close"></ion-icon></span>
+
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action="/login" method="post">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="text" name="email" placeholder="Email" required>
+                    <!-- <label>Email</label> -->
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <!-- <label>Password</label> -->
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <select name="loginType" id="loginType" required>
+                        <option value="" disabled selected>Select Login Type</option>
+                        <option value="registrar">Registrar</option>
+                        <option value="judge">Judge</option>
+                        <option value="lawyer">Lawyer</option>
+                    </select>
+                </div>
+                <div class="forget">
+                    <label><input type="checkbox">Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+
+                <div class="login-register">
+                    <p>Don't have an account?
+                        <a href="#" class="register-link">Register</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-box register">
+            <h2>Registration</h2>
+            <form action="/register" method="post">
+                <div class="input-box">
+                    <select class="icon t" name="role" required>
+                        <option value="lawyer">Lawyer</option>
+                        <option value="judge">Judge</option>
+                        <option value="registrar">Registrar</option>
+                    </select>
+                    <!-- <span class="icon"><ion-icon name="person"></ion-icon></span> -->
+                    <input type="text" name="name" placeholder="Special Id" required>
+                    <!-- <label for="role">Role:</label> -->
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" name="cpassword" placeholder="Confirm Password" required>
+                </div>
+                <div class="input-box" style="display: none;">
+                    <!-- <span class="icon"><ion-icon name="lock-closed"></ion-icon></span> -->
+                    <input type="" name="person" value="registrar" required >
+                </div>
+                    
+
+                <div class="forget">
+                    <label>
+                        <input type="checkbox" required>
+                        Agree to the terms & conditions
+                    </label>
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <div class="login-register">
+                    <p>Already have an account?
+                        <a href="#" class="login-link">Login</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="/login/login.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

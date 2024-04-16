@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment by Lawyer</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #E4E9F7;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-repeat: no-repeat;
+        background-position-x: 98%;
+        background-position-y: 50%;
+        padding-right: 40px;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #162938;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    button:hover {
+        background-color: #213747;
+    }
+
+    .option-unavailable {
+        color: red;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select,
+    textarea {
+        text-align: left;
+    }
+</style>
+
+
+<body>
+    <div class="container">
+        <h1>Payment</h1>
+        <form id="paymentForm">
+            <div class="form-group">
+                <label for="clientName">Client Email:</label>
+                <input type="text" id="client" name="clientName" readonly>
+            </div>
+            <div class="form-group">
+                <label for="caseId">Number of cases view</label>
+                <input id="caseId" name="caseId" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" min="1" step="0.01" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="paymentMethod">Payment Method:</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="UPI">UPI</option>
+                </select>
+            </div>
+
+            <button type="button" onclick="processPayment()">Process Payment</button>
+        </form>
+    </div>
+
+    <script>
+        async function fetchCount() {
+            try {
+                const response = await fetch('/api/getCount');
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('client').value = data.email;
+                    document.getElementById('caseId').value = data.count;
+                    document.getElementById('amount').value = data.count * 40;
+                } else {
+                    console.error('Error fetching count:', data.message);
+                }
+            } catch (error) {
+                console.error('Error fetching count:', error);
+            }
+        }
+
+        async function init() {
+            try {
+                fetchCount();
+            } catch (error) {
+                console.error('Error initializing the page:', error);
+            }
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/registrar/case.css">
+    <title>New Case Details</title>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <h1>New Case Details</h1>
+        </div>
+    </nav>
+    <div class="container">
+        <form action="/add_case" method="post">
+            <label for="cin">CIN Number:</label>
+            <input type="text" id="cin" name="cin" readonly><br>
+
+            <label for="defendantName">Defendant Name:</label>
+            <input type="text" id="defendantName" name="defendantName"><br>
+
+            <label for="defendantAddress">Defendant Address:</label>
+            <textarea id="defendantAddress" name="defendantAddress"></textarea><br>
+
+            <label for="crimeType">Crime Type:</label>
+            <div class="crime-type">
+                <input type="checkbox" id="theft" name="crimeType" value="theft">
+                <label for="theft">Theft</label>
+                <input type="checkbox" id="murder" name="crimeType" value="murder">
+                <label for="murder">Murder</label>
+                <input type="checkbox" id="arson" name="crimeType" value="arson">
+                <label for="arson">Arson</label>
+            </div>
+
+            <label for="locationCommitted">Where Committed:</label>
+            <textarea id="locationCommitted" name="locationCommitted"></textarea><br>
+
+            <label for="arrestingOfficer">Arresting Officer:</label>
+            <input type="text" id="arrestingOfficer" name="arrestingOfficer"><br>
+
+            <label for="dateCommitted">Date Committed:</label>
+            <input type="date" id="dateCommitted" name="dateCommitted"><br>
+
+            <label for="caseStatus">Case Status:</label>
+            <div class="caseStatus">
+                <input type="checkbox" id="Solved" name="caseStatus" value="Solved">
+                <label for="Solved">Solved</label>
+                <input type="checkbox" id="Pending" name="caseStatus" value="Pending">
+                <label for="Pending">Pending</label>
+                <input type="checkbox" id="Running" name="caseStatus" value="Running">
+                <label for="Running">Running</label>
+            </div>
+
+            <label for="judgeAssigned">Judge Assigned:</label>
+            <input type="text" id="judgeAssigned" name="judgeAssigned"><br>
+
+            <label for="lawyer">Lawyer:</label>
+            <input type="text" id="lawyer" name="lawyer"><br>
+
+            <label for="publicProsecutor">Public Prosecutor:</label>
+            <input type="text" id="publicProsecutor" name="publicProsecutor"><br>
+
+            <label for="dateOfArrest">Date of Arrest:</label>
+            <input type="date" id="dateOfArrest" name="dateOfArrest"><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script>
+        fetch('/api/cases')
+            .then(response => response.json())
+            .then(data => {
+                const cinInput = document.getElementById('cin');
+
+                if (data.length > 0) {
+                    const lastCin = data[data.length - 1].cin;
+                    const nextSeq = parseInt(lastCin.substring(3)) + 1;
+                    const newCin = `CIN${nextSeq.toString().padStart(6, '0')}`;
+                    cinInput.value = newCin;
+                } else {
+                    cinInput.value = "CIN000001"; 
+                }
+            })
+            .catch(error => console.error('Error fetching cases:', error));
+    </script>
+</body>
+
+</html>
